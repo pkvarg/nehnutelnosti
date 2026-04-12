@@ -60,29 +60,6 @@ export default function Header({ navItems, ctaButton, siteName }: HeaderProps) {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-8 lg:flex">
-            {navItems?.map((item) =>
-              item.label && item.url ? (
-                <Link
-                  key={item.id || item.url}
-                  href={item.url}
-                  className="group relative text-[0.8rem] font-medium uppercase tracking-[0.06em] text-cream/80 transition-colors hover:text-cream"
-                >
-                  {item.label}
-                  <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-gold transition-all duration-300 group-hover:w-full" />
-                </Link>
-              ) : null,
-            )}
-          </nav>
-
-          <div className="hidden items-center gap-4 lg:flex">
-            {ctaButton?.show && ctaButton.label && ctaButton.url && (
-              <Link href={ctaButton.url} className="btn-gold">
-                {ctaButton.label}
-              </Link>
-            )}
-          </div>
-
           <button
             onClick={() => setMobileOpen(true)}
             className={`items-center justify-center text-cream lg:hidden ${navItems && navItems.length > 0 ? 'flex' : 'hidden'}`}

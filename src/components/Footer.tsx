@@ -6,7 +6,14 @@ interface SocialLink {
   id?: string | null
 }
 
+interface NavItem {
+  label?: string | null
+  url?: string | null
+  id?: string | null
+}
+
 interface FooterProps {
+  navItems?: NavItem[] | null
   companyName?: string | null
   description?: string | null
   phone?: string | null
@@ -44,6 +51,7 @@ function SocialIcon({ platform }: { platform: string }) {
 }
 
 export default function Footer({
+  navItems,
   companyName,
   description,
   phone,
@@ -170,21 +178,15 @@ export default function Footer({
                   Domov
                 </Link>
               </li>
-              <li>
-                <Link href="/ponuka" className="transition-colors hover:text-cream">
-                  Ponuka
-                </Link>
-              </li>
-              <li>
-                <Link href="/o-nas" className="transition-colors hover:text-cream">
-                  O nás
-                </Link>
-              </li>
-              <li>
-                <Link href="/kontakt" className="transition-colors hover:text-cream">
-                  Kontakt
-                </Link>
-              </li>
+              {navItems?.map((item) =>
+                item.label && item.url ? (
+                  <li key={item.id || item.url}>
+                    <Link href={item.url} className="transition-colors hover:text-cream">
+                      {item.label}
+                    </Link>
+                  </li>
+                ) : null,
+              )}
             </ul>
             {openingHours && (
               <div className="mt-6">

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import type { Metadata } from 'next'
 import { Playfair_Display, DM_Sans } from 'next/font/google'
 import { getPayload } from 'payload'
@@ -47,16 +49,31 @@ export default async function FrontendLayout({ children }: { children: React.Rea
       payload.findGlobal({ slug: 'footer' }),
     ])
 
-    navItems = pages.docs.map((page) => ({
-      label: page.title as string,
-      url: `/${(page.slug as string).replace(/^\//, '')}`,
-      id: page.id as string,
-    }))
+    const coreItems = [
+      { label: 'Ponuka', url: '/ponuka', id: 'core-ponuka' },
+      { label: 'O nás', url: '/o-nas', id: 'core-o-nas' },
+      { label: 'Kontakt', url: '/kontakt', id: 'core-kontakt' },
+    ]
+    const cmsItems = pages.docs
+      .filter((page) => {
+        const slug = (page.slug as string).replace(/^\//, '')
+        return !['o-nas', 'kontakt', 'ponuka'].includes(slug)
+      })
+      .map((page) => ({
+        label: page.title as string,
+        url: `/${(page.slug as string).replace(/^\//, '')}`,
+        id: page.id as string,
+      }))
+    navItems = [...coreItems, ...cmsItems]
     ctaButton = { show: false }
     siteName = (siteSettings.siteName as string) || 'Vaše Reality'
     footerData = footer as Record<string, unknown>
   } catch {
-    navItems = []
+    navItems = [
+      { label: 'Ponuka', url: '/ponuka', id: 'core-ponuka' },
+      { label: 'O nás', url: '/o-nas', id: 'core-o-nas' },
+      { label: 'Kontakt', url: '/kontakt', id: 'core-kontakt' },
+    ]
     ctaButton = { show: false }
     siteName = 'Vaše Reality'
   }
@@ -67,6 +84,7 @@ export default async function FrontendLayout({ children }: { children: React.Rea
         <Header navItems={navItems} ctaButton={ctaButton} siteName={siteName} />
         <main className="flex-1">{children}</main>
         <Footer
+          navItems={navItems}
           companyName={footerData.companyName as string | undefined}
           description={footerData.description as string | undefined}
           phone={footerData.phone as string | undefined}
