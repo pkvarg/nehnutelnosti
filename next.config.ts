@@ -3,10 +3,11 @@ import { withPayload } from "@payloadcms/next/withPayload";
 
 const nextConfig: NextConfig = {
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "nehnutelnosti.betterhost.sk",
+        hostname: "**",
       },
     ],
   },
