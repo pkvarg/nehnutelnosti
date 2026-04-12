@@ -27,7 +27,19 @@ export default buildConfig({
     url: process.env.MONGODB_URI || 'mongodb://localhost:27017/nehnutelnosti',
   }),
   i18n: {
-    supportedLanguages: { sk },
+    supportedLanguages: {
+      sk: {
+        ...sk,
+        translations: {
+          ...sk.translations,
+          general: {
+            ...sk.translations.general,
+            globals: 'Glob\u00e1lne',
+            leaveAnyway: 'Napriek tomu od\u00eds\u0165',
+          },
+        },
+      },
+    },
     fallbackLanguage: 'sk',
   },
   admin: {
