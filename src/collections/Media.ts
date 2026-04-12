@@ -6,6 +6,9 @@ export const Media: CollectionConfig = {
     singular: 'M\u00e9dium',
     plural: 'M\u00e9di\u00e1',
   },
+  access: {
+    read: () => true,
+  },
   upload: {
     staticDir: 'media',
     imageSizes: [
