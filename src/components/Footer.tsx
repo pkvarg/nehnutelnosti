@@ -8,6 +8,7 @@ interface SocialLink {
 
 interface FooterProps {
   companyName?: string | null
+  description?: string | null
   phone?: string | null
   email?: string | null
   address?: string | null
@@ -43,6 +44,7 @@ function SocialIcon({ platform }: { platform: string }) {
 
 export default function Footer({
   companyName,
+  description,
   phone,
   email,
   address,
@@ -63,8 +65,7 @@ export default function Footer({
               {companyName || 'Vaše Reality'}
             </h3>
             <p className="text-sm leading-relaxed text-cream/60">
-              Váš spoľahlivý partner pri predaji a kúpe nehnuteľností. S nami nájdete domov, ktorý
-              si zaslúžite.
+              {description || 'Váš spoľahlivý partner pri predaji a kúpe nehnuteľností. S nami nájdete domov, ktorý si zaslúžite.'}
             </p>
             {socialLinks && socialLinks.length > 0 && (
               <div className="mt-6 flex gap-4">

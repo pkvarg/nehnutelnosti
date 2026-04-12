@@ -10,6 +10,12 @@ export const Footer: GlobalConfig = {
       label: 'N\u00e1zov firmy',
     },
     {
+      name: 'description',
+      type: 'textarea',
+      label: 'Popis firmy',
+      defaultValue: 'V\u00e1\u0161 spo\u013eahliv\u00fd partner pri predaji a k\u00fape nehnute\u013enost\u00ed. S nami n\u00e1jdete domov, ktor\u00fd si zasl\u00fa\u017eite.',
+    },
+    {
       name: 'phone',
       type: 'text',
       label: 'Telef\u00f3n',

@@ -63,6 +63,7 @@ export default async function FrontendLayout({ children }: { children: React.Rea
         <main className="flex-1">{children}</main>
         <Footer
           companyName={footerData.companyName as string | undefined}
+          description={footerData.description as string | undefined}
           phone={footerData.phone as string | undefined}
           email={footerData.email as string | undefined}
           address={footerData.address as string | undefined}
