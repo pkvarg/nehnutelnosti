@@ -15,6 +15,7 @@ interface FooterProps {
   openingHours?: string | null
   socialLinks?: SocialLink[] | null
   mapEmbedUrl?: string | null
+  copyrightText?: string | null
 }
 
 function SocialIcon({ platform }: { platform: string }) {
@@ -51,6 +52,7 @@ export default function Footer({
   openingHours,
   socialLinks,
   mapEmbedUrl,
+  copyrightText,
 }: FooterProps) {
   const year = new Date().getFullYear()
 
@@ -216,7 +218,7 @@ export default function Footer({
         </div>
 
         <div className="mt-12 border-t border-cream/10 pt-8 text-center text-xs text-cream/40">
-          &copy; {year} {companyName || 'Vaše Reality'}. Všetky práva vyhradené.
+          &copy; {year} {companyName || 'Vaše Reality'}. {copyrightText || 'Všetky práva vyhradené.'}
         </div>
       </div>
     </footer>

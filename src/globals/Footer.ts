@@ -67,5 +67,11 @@ export const Footer: GlobalConfig = {
       type: 'text',
       label: 'Google Maps embed URL',
     },
+    {
+      name: 'copyrightText',
+      type: 'text',
+      label: 'Text copyrightu',
+      defaultValue: 'V\u0161etky pr\u00e1va vyhraden\u00e9.',
+    },
   ],
 }

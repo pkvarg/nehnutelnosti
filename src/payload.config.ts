@@ -13,6 +13,7 @@ import { SiteSettings } from '@/globals/SiteSettings'
 import { Footer } from '@/globals/Footer'
 import { Navigation } from '@/globals/Navigation'
 import { HomePage } from '@/globals/HomePage'
+import { AboutPage } from '@/globals/AboutPage'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -20,7 +21,7 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:4005',
   collections: [Properties, Pages, Media],
-  globals: [SiteSettings, Footer, Navigation, HomePage],
+  globals: [SiteSettings, Footer, Navigation, HomePage, AboutPage],
   editor: lexicalEditor(),
   db: mongooseAdapter({
     url: process.env.MONGODB_URI || 'mongodb://localhost:27017/nehnutelnosti',

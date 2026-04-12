@@ -8,6 +8,11 @@ export const Navigation: GlobalConfig = {
       name: 'navItems',
       type: 'array',
       label: 'Polo\u017eky menu',
+      defaultValue: [
+        { label: 'Ponuka', url: '/ponuka' },
+        { label: 'O n\u00e1s', url: '/o-nas' },
+        { label: 'Kontakt', url: '/kontakt' },
+      ],
       fields: [
         {
           name: 'label',
@@ -40,7 +45,7 @@ export const Navigation: GlobalConfig = {
           name: 'show',
           type: 'checkbox',
           label: 'Zobrazi\u0165',
-          defaultValue: false,
+          defaultValue: true,
         },
       ],
     },

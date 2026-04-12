@@ -35,6 +35,26 @@ export const Pages: CollectionConfig = {
       },
     },
     {
+      name: 'subtitle',
+      type: 'text',
+      label: 'Podnadpis',
+    },
+    {
+      name: 'showInNav',
+      type: 'checkbox',
+      label: 'Zobrazi\u0165 v navig\u00e1cii',
+      defaultValue: true,
+    },
+    {
+      name: 'navOrder',
+      type: 'number',
+      label: 'Poradie v navig\u00e1cii',
+      defaultValue: 0,
+      admin: {
+        description: 'Ni\u017e\u0161ie \u010d\u00edslo = sk\u00f4r v menu',
+      },
+    },
+    {
       name: 'content',
       type: 'richText',
       label: 'Obsah',

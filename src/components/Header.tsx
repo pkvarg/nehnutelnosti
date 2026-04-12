@@ -85,7 +85,7 @@ export default function Header({ navItems, ctaButton, siteName }: HeaderProps) {
 
           <button
             onClick={() => setMobileOpen(true)}
-            className="flex items-center justify-center text-cream lg:hidden"
+            className={`items-center justify-center text-cream lg:hidden ${navItems && navItems.length > 0 ? 'flex' : 'hidden'}`}
             aria-label="Otvoriť menu"
           >
             <svg

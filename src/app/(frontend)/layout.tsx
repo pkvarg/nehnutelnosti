@@ -36,23 +36,28 @@ export default async function FrontendLayout({ children }: { children: React.Rea
   try {
     const payload = await getPayload({ config })
 
-    const [navigation, siteSettings, footer] = await Promise.all([
-      payload.findGlobal({ slug: 'navigation' }),
+    const [pages, siteSettings, footer] = await Promise.all([
+      payload.find({
+        collection: 'pages',
+        where: { showInNav: { equals: true } },
+        sort: 'navOrder',
+        limit: 20,
+      }),
       payload.findGlobal({ slug: 'site-settings' }),
       payload.findGlobal({ slug: 'footer' }),
     ])
 
-    navItems = (navigation.navItems as typeof navItems) || []
-    ctaButton = (navigation.ctaButton as typeof ctaButton) || {}
-    siteName = (siteSettings.siteName as string) || null
+    navItems = pages.docs.map((page) => ({
+      label: page.title as string,
+      url: `/${(page.slug as string).replace(/^\//, '')}`,
+      id: page.id as string,
+    }))
+    ctaButton = { show: false }
+    siteName = (siteSettings.siteName as string) || 'Vaše Reality'
     footerData = footer as Record<string, unknown>
   } catch {
-    navItems = [
-      { label: 'Ponuka', url: '/ponuka' },
-      { label: 'O nás', url: '/o-nas' },
-      { label: 'Kontakt', url: '/kontakt' },
-    ]
-    ctaButton = { label: 'Kontaktujte nás', url: '/kontakt', show: true }
+    navItems = []
+    ctaButton = { show: false }
     siteName = 'Vaše Reality'
   }
 
@@ -78,6 +83,7 @@ export default async function FrontendLayout({ children }: { children: React.Rea
               | undefined
           }
           mapEmbedUrl={footerData.mapEmbedUrl as string | undefined}
+          copyrightText={footerData.copyrightText as string | undefined}
         />
       </body>
     </html>
