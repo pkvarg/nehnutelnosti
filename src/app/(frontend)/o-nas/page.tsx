@@ -29,25 +29,25 @@ async function getAboutPageData(): Promise<AboutPageData> {
   }
 }
 
-const defaultParagraphs = [
+const defaultParagraphs: AboutPageData['paragraphs'] = [
   {
-    type: 'paragraph' as const,
+    type: 'paragraph',
     text: 'Vaše Reality je realitná kancelária s dlhoročnými skúsenosťami na slovenskom trhu s nehnuteľnosťami. Naším cieľom je poskytnúť klientom profesionálne služby pri predaji, kúpe a prenájme nehnuteľností.',
   },
   {
-    type: 'paragraph' as const,
+    type: 'paragraph',
     text: 'Veríme, že každý si zaslúži nájsť svoj vysnívaný domov. Preto pristupujeme ku každému klientovi individuálne a hľadáme riešenia šité na mieru jeho potrebám a predstavám.',
   },
   {
-    type: 'heading' as const,
+    type: 'heading',
     text: 'Naše hodnoty',
   },
   {
-    type: 'paragraph' as const,
+    type: 'paragraph',
     text: 'Stavíme na profesionalite, transparentnosti a osobnom prístupe. Každá transakcia je pre nás rovnako dôležitá, bez ohľadu na jej veľkosť.',
   },
   {
-    type: 'paragraph' as const,
+    type: 'paragraph',
     text: 'Ak hľadáte spoľahlivého partnera pre vaše realitné potreby, neváhajte nás kontaktovať.',
   },
 ]
@@ -74,7 +74,7 @@ export default async function AboutPage() {
         </div>
 
         <div className="rich-text">
-          {paragraphs.map((item, i) =>
+          {paragraphs?.map((item, i) =>
             item.type === 'heading' ? (
               <h2 key={item.id || i}>{item.text}</h2>
             ) : (
