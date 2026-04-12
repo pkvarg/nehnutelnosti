@@ -88,6 +88,23 @@ export const HomePage: GlobalConfig = {
       type: 'array',
       label: 'Výhody — karty',
       maxRows: 6,
+      defaultValue: [
+        {
+          title: 'Skúsenosti',
+          description: 'Dlhoročné pôsobenie na slovenskom realitnom trhu nám umožňuje poskytnúť vám tie najlepšie služby a poradenstvo.',
+          icon: 'star',
+        },
+        {
+          title: 'Osobný prístup',
+          description: 'Každý klient je pre nás jedinečný. Venujeme sa vašim potrebám individuálne a hľadáme riešenie šité na mieru.',
+          icon: 'users',
+        },
+        {
+          title: 'Transparentnosť',
+          description: 'Dbáme na úplnú transparentnosť v každom kroku. Vždy budete informovaní o stave a priebehu celého procesu.',
+          icon: 'shield',
+        },
+      ],
       fields: [
         { name: 'title', type: 'text', label: 'Názov', required: true },
         { name: 'description', type: 'textarea', label: 'Popis', required: true },
