@@ -38,7 +38,7 @@ export default function ContactForm({ className }: { className?: string }) {
 
     setSubmitting(true)
 
-    // TODO: implement backend - send form data to API
+    // Demo site: the form intentionally sends nothing anywhere.
     await new Promise((resolve) => setTimeout(resolve, 800))
 
     setSubmitting(false)
@@ -54,10 +54,10 @@ export default function ContactForm({ className }: { className?: string }) {
           </svg>
         </div>
         <h3 className="font-display text-xl font-semibold text-navy">
-          Ďakujeme za vašu správu!
+          Takto by vyzeralo odoslanie správy
         </h3>
         <p className="mt-2 text-warm-gray">
-          Budeme vás kontaktovať čo najskôr.
+          Toto je ukážkový web – vaša správa sa nikam neodoslala ani neuložila.
         </p>
       </div>
     )

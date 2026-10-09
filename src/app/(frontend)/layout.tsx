@@ -1,6 +1,7 @@
 export const dynamic = 'force-dynamic'
 
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Playfair_Display, DM_Sans } from 'next/font/google'
 import { getPayload } from 'payload'
 import config from '@payload-config'
@@ -15,6 +16,8 @@ export const metadata: Metadata = {
   },
   description:
     'Vaše Reality - Váš spoľahlivý partner pri predaji a kúpe nehnuteľností. Byty, domy, pozemky a komerčné priestory na Slovensku.',
+  // Demo site with fictional listings: keep it out of search results.
+  robots: { index: false, follow: false },
 }
 
 const playfair = Playfair_Display({
@@ -83,6 +86,13 @@ export default async function FrontendLayout({ children }: { children: React.Rea
       <body className="frontend min-h-full flex flex-col">
         <Header navItems={navItems} ctaButton={ctaButton} siteName={siteName} />
         <main className="flex-1">{children}</main>
+        {/* Demo notice, visible on every page */}
+        <Link
+          href="/obchodne-podmienky"
+          className="fixed bottom-4 left-4 z-40 max-w-[calc(100vw-2rem)] rounded-sm bg-gold px-4 py-2 text-xs font-semibold text-navy shadow-lg md:text-sm"
+        >
+          Ukážkový web od Pictusweb – kancelária, nehnuteľnosti ani formulár nie sú skutočné
+        </Link>
         <Footer
           navItems={navItems}
           companyName={footerData.companyName as string | undefined}

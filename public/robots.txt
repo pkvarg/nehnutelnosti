@@ -1,0 +1,3 @@
+# Demo site with fictional listings – not for search engines.
+User-agent: *
+Disallow: /

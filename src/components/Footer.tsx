@@ -203,18 +203,25 @@ export default function Footer({
               <h4 className="mb-6 text-xs font-semibold uppercase tracking-widest text-gold">
                 Kde nás nájdete
               </h4>
-              <div className="aspect-square w-full overflow-hidden rounded-sm">
-                <iframe
-                  src={mapEmbedUrl}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
+              {/* Static map image served from our own domain (Google Maps screenshot with
+                  the standard attribution), so visitors don't contact Google until they click. */}
+              <a
+                href="https://www.google.com/maps/@47.98049,18.1716831,15z"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block aspect-square w-full overflow-hidden rounded-sm"
+                aria-label="Otvoriť mapu v Google Maps"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/mapa-ukazka.webp"
+                  alt="Ukážková mapa – fiktívna realitná kancelária"
+                  width={600}
+                  height={600}
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Mapa"
+                  className="h-full w-full object-cover"
                 />
-              </div>
+              </a>
             </div>
           )}
         </div>
