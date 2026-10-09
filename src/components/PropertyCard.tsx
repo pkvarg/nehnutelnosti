@@ -66,7 +66,7 @@ export default function PropertyCard({
   status,
   images,
 }: PropertyCardProps) {
-  const firstImage = images?.[0]?.image
+  const firstImage = images?.find((item) => item.image && typeof item.image === 'object')?.image
   const imageObj = typeof firstImage === 'object' ? firstImage : null
   const imageUrl = imageObj?.sizes?.card?.url || imageObj?.url || null
 

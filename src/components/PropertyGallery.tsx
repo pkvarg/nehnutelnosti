@@ -39,7 +39,7 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
   }
 
   const activeImage = resolvedImages[activeIndex]
-  const mainUrl = activeImage?.url || activeImage?.sizes?.full?.url || ''
+  const mainUrl = activeImage?.sizes?.full?.url || activeImage?.url || ''
 
   return (
     <div>
@@ -84,7 +84,7 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
       {resolvedImages.length > 1 && (
         <div className="mt-3 flex gap-2 overflow-x-auto pb-2">
           {resolvedImages.map((img, i) => {
-            const thumbUrl = img.url || img.sizes?.thumbnail?.url || ''
+            const thumbUrl = img.sizes?.thumbnail?.url || img.url || ''
             return (
               <button
                 key={i}
