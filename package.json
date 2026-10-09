@@ -2,6 +2,7 @@
   "name": "nehnutelnosti",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.18.0",
   "scripts": {
     "dev": "next dev --webpack -p 4005",
     "build": "next build --webpack",
@@ -22,6 +23,9 @@
   },
   "engines": {
     "node": ">=22.13.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["sharp"]
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
