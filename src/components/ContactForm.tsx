@@ -12,6 +12,9 @@ export default function ContactForm({ className }: { className?: string }) {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
+  const [sendError, setSendError] = useState(false)
+  // Hidden field humans never fill; bots that do are silently ignored.
+  const [website, setWebsite] = useState('')
 
   function validate(): boolean {
     const newErrors: Record<string, string> = {}
@@ -36,13 +39,38 @@ export default function ContactForm({ className }: { className?: string }) {
     e.preventDefault()
     if (!validate()) return
 
+    if (website) {
+      setSubmitted(true)
+      return
+    }
+
     setSubmitting(true)
+    setSendError(false)
 
-    // Demo site: the form intentionally sends nothing anywhere.
-    await new Promise((resolve) => setTimeout(resolve, 800))
-
-    setSubmitting(false)
-    setSubmitted(true)
+    // Same contact pipeline as Pictusweb's other sites: hono-api e-mails a copy to the
+    // sender and to the NEHNUTELNOSTI mailbox.
+    try {
+      const response = await fetch('https://hono-api.pictusweb.com/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          mailMessage: formData.message,
+          locale: 'sk',
+          origin: 'NEHNUTELNOSTI',
+          subject: 'Správa z ukážkového webu Vaše Reality',
+        }),
+      })
+      if (!response.ok) throw new Error(`HTTP ${response.status}`)
+      setSubmitted(true)
+    } catch (error) {
+      console.error(error)
+      setSendError(true)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -54,10 +82,10 @@ export default function ContactForm({ className }: { className?: string }) {
           </svg>
         </div>
         <h3 className="font-display text-xl font-semibold text-navy">
-          Takto by vyzeralo odoslanie správy
+          Ďakujeme za vašu správu!
         </h3>
         <p className="mt-2 text-warm-gray">
-          Toto je ukážkový web – vaša správa sa nikam neodoslala ani neuložila.
+          Potvrdenie sme vám poslali e-mailom. Ozveme sa vám čo najskôr.
         </p>
       </div>
     )
@@ -123,6 +151,24 @@ export default function ContactForm({ className }: { className?: string }) {
         />
         {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
       </div>
+
+      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
+        />
+      </div>
+
+      {sendError && (
+        <p className="text-sm text-red-500">
+          Správu sa nepodarilo odoslať. Skúste to znova alebo napíšte na info@pictusweb.sk.
+        </p>
+      )}
 
       <button
         type="submit"

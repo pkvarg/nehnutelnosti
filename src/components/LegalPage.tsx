@@ -1,4 +1,5 @@
 interface LegalSection {
+  id?: string
   title: string
   text: string[]
 }
@@ -22,7 +23,7 @@ export default function LegalPage({ eyebrow, title, sections }: LegalPageProps) 
 
         <div className="rich-text">
           {sections.map((section) => (
-            <section key={section.title}>
+            <section key={section.title} id={section.id} className="scroll-mt-28">
               <h2>{section.title}</h2>
               {section.text.map((line) => (
                 <p key={line}>{line}</p>

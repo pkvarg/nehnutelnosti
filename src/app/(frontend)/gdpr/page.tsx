@@ -3,7 +3,7 @@ import LegalPage from '@/components/LegalPage'
 
 export const metadata: Metadata = {
   title: 'Ochrana osobných údajov',
-  description: 'Ukážkový web – nezbiera žiadne osobné údaje.',
+  description: 'Ukážkový web od Pictusweb – aké údaje spracúva kontaktný formulár.',
 }
 
 const sections = [
@@ -16,9 +16,19 @@ const sections = [
   {
     title: 'Aké údaje web spracúva',
     text: [
-      'Web nezbiera žiadne osobné údaje. Kontaktný formulár slúži len na ukážku – nič, čo doň napíšete, sa nikam neodošle ani neuloží.',
-      'Web nepoužíva cookies, analytické ani reklamné nástroje. Písma sú súčasťou webu a nenačítavajú sa od Google.',
+      'Kontaktný formulár naozaj funguje, aby ste si ho mohli vyskúšať. Meno, e-mail, telefón (nepovinný) a správu, ktoré vyplníte, pošleme e-mailom do schránky spoločnosti Pictusweb s.r.o. a kópiu ako potvrdenie na zadaný e-mail. Do databázy webu sa neukladajú.',
+      'Údaje použijeme len na odpoveď, ak nám píšete napríklad so záujmom o takýto web (čl. 6 ods. 1 písm. b) GDPR – rokovanie o zmluve, inak čl. 6 ods. 1 písm. f) – oprávnený záujem na predvedení webu). Správy v schránke uchovávame najviac 1 rok. E-maily odosiela server Pictusweb (Contabo GmbH, Nemecko) cez e-mailovú službu Titan (Hostinger).',
+      'Písma sú súčasťou webu a nenačítavajú sa od Google. Nepoužívame reklamné ani sledovacie cookies.',
       'Mapa v pätičke je obrázok uložený na našom serveri; Google Maps sa otvorí v novom okne až po kliknutí na ňu.',
+    ],
+  },
+  {
+    id: 'cookies',
+    title: 'Cookies a meranie návštevnosti',
+    text: [
+      'Nevyhnutné: cookie CookieConsent si na 365 dní zapamätá vašu voľbu v lište cookies. Ak meranie odmietnete, prehliadač si to zapamätá aj v úložisku (umami.disabled).',
+      'Meranie návštevnosti (len s vaším súhlasom): Umami – nástroj na meranie návštevnosti na serveri v Nemecku (Contabo GmbH), ktorý prevádzkuje Pictusweb s.r.o. Nepoužíva cookies, neukladá IP adresu a nevytvára profil návštevníka; vidno len súhrnné štatistiky. Spustí sa až po kliknutí na „Súhlasím“.',
+      'Súhlas môžete kedykoľvek zmeniť odkazom „Nastavenia cookies“ v pätičke webu. Pravidlá pre cookies vychádzajú z § 109 ods. 8 zákona č. 452/2021 Z. z. o elektronických komunikáciách.',
     ],
   },
   {

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import CookieSettingsButton from './CookieSettingsButton'
 
 interface SocialLink {
   platform?: 'facebook' | 'instagram' | 'linkedin' | null
@@ -226,8 +227,19 @@ export default function Footer({
           )}
         </div>
 
-        <div className="mt-12 border-t border-cream/10 pt-8 text-center text-xs text-cream/40">
-          &copy; {year} {companyName || 'Vaše Reality'}. {copyrightText || 'Všetky práva vyhradené.'}
+        <div className="mt-12 flex flex-col items-center gap-3 border-t border-cream/10 pt-8 text-center text-xs text-cream/40">
+          <nav className="flex flex-wrap justify-center gap-x-5 gap-y-1">
+            <Link href="/gdpr" className="transition-colors hover:text-cream">
+              Ochrana osobných údajov
+            </Link>
+            <Link href="/obchodne-podmienky" className="transition-colors hover:text-cream">
+              Obchodné podmienky
+            </Link>
+            <CookieSettingsButton />
+          </nav>
+          <p>
+            &copy; {year} {companyName || 'Vaše Reality'}. {copyrightText || 'Všetky práva vyhradené.'}
+          </p>
         </div>
       </div>
     </footer>
